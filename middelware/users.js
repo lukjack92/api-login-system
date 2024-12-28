@@ -28,15 +28,16 @@ module.exports = {
 
     isLoggedIn: (req, res, next) => {
         try{
-            //const token = req.headers.authorization.split(' ')[1];
-            const token = req.get('Authorization');
-            console.log(token);
+            //const accessToken = req.headers.authorization.split(' ')[1];
+            const accessToken = req.headers['authorization'];
+            //const token = req.get('Authorization');
+            //console.log(accessToken);
             const decoded = jwt.verify(
-                token,
-                'secretcodeLJ'
+                accessToken,
+                process.env.ACCESS_TOKEN_SECRET
             );
-            req.userData = decoded;
-            console.log(decoded);
+            //req.userData = decoded;
+            //console.log(decoded);
             next();
         } catch (err) {
             console.log("Error: " + err.message);
