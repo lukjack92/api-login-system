@@ -1,4 +1,4 @@
 .evn
-/lib/db.js
-/node_modules
+lib/db.js
+node_modules
 requests.rest
